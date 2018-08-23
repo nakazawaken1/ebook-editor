@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>eBook editor</title>
+<style type="text/css">
+* {
+  box-sizing: border-box;
+}
+#body {
+  position: fixed;
+  top: 1em;
+  right: 0;
+  bottom: 1em;
+  left: 0;
+  color: #000;
+  background-color: #ddd;
+}
+#header {
+  position: fixed;
+  top: 0;
+  height: 1em;
+  color: #fff;
+  background-color: #222;
+}
+#footer {
+  position: fixed;
+  bottom: 0;
+  height: 1em;
+  color: #fff;
+  background-color: #222;
+}
+</style>
+</head>
+<body>
+<div id="body" contenteditable="true">
+あいうえお
+</div>
+<div id="header">
+*New file
+</div>
+<div id="footer">
+<button id="save">save</button>
+</div>
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  document.getElementById('save').addEventListener('click', function() {
+    var blob = new Blob([ this.innerHTML ], { "type" : "text/plain" });
+    if (window.navigator.msSaveBlob) { 
+        window.navigator.msSaveBlob(blob, "book.txt");
+    } else {
+        location.href = URL.createObjectURL(blob);
+    }
+  }, true);
+}, false);
+</script>
+</body>
+</html>
