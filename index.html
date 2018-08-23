@@ -9,9 +9,9 @@
 }
 #body {
   position: fixed;
-  top: 1em;
+  top: 2em;
   right: 0;
-  bottom: 1em;
+  bottom: 2em;
   left: 0;
   color: #000;
   background-color: #ddd;
@@ -19,16 +19,17 @@
 #header {
   position: fixed;
   top: 0;
-  height: 1em;
+  height: 2em;
   color: #fff;
   background-color: #222;
 }
 #footer {
   position: fixed;
   bottom: 0;
-  height: 1em;
+  height: 2em;
   color: #fff;
   background-color: #222;
+  text-align: right;
 }
 </style>
 </head>
@@ -40,12 +41,12 @@
 *New file
 </div>
 <div id="footer">
-<button type="button" id="save">save</button>
+<a id="save" download="book.txt">save</a>
 </div>
 <script type="text/javascript">
 window.addEventListener('load', function() {
   document.getElementById('save').addEventListener('click', function() {
-    var blob = new Blob([ this.innerHTML ], { "type" : "text/plain" });
+    var blob = new Blob([ document.getElementById('body').innerHTML ], { "type" : "text/plain" });
     if (window.navigator.msSaveBlob) { 
         window.navigator.msSaveBlob(blob, "book.txt");
     } else {
