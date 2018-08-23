@@ -47,7 +47,7 @@
 *New file
 </div>
 <div id="footer">
-<a id="save" download="book.txt">save</a>
+<a id="save" href="#" download="book.txt">save</a>
 </div>
 <script type="text/javascript">
 window.addEventListener('load', function() {
@@ -56,7 +56,7 @@ window.addEventListener('load', function() {
     if (window.navigator.msSaveBlob) { 
         window.navigator.msSaveBlob(blob, "book.txt");
     } else {
-        location.href = URL.createObjectURL(blob);
+        this.href = URL.createObjectURL(blob);
     }
   }, true);
 }, false);
